@@ -1,23 +1,20 @@
 import { requestAccess } from "./api.js";
 
-const btn = document.getElementById("sendBtn");
-const output = document.getElementById("output");
-
-btn.addEventListener("click", async () => {
-  output.innerText = "Sending request...";
-
+window.sendTest = async function () {
   try {
-    const res = await requestAccess({
+    const response = await requestAccess({
       app_id: "demo_app",
       user_id: "user_001",
       data_type: "location",
-      purpose: "delivery_tracking",
-      destination: "frontend",
+      purpose: "analytics",
+      destination: "frontend-ui",
       timestamp: new Date().toISOString()
     });
 
-    output.innerText = JSON.stringify(res, null, 2);
+    alert("Response received. Check console.");
+    console.log("Backend response:", response);
   } catch (err) {
-    output.innerText = "Error: " + err.message;
+    console.error(err);
+    alert("Backend request failed");
   }
-});
+};

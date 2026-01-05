@@ -1,4 +1,4 @@
-const API_BASE = window.API_BASE;
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 export async function requestAccess(payload) {
   const res = await fetch(`${API_BASE}/request-access`, {

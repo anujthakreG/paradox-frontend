@@ -2,37 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Paradox Protocol</title>
-
-  <!-- BACKEND URL INJECTED HERE -->
-  <script>
-    window.API_BASE = "https://paradox-protocol.onrender.com";
-  </script>
+  <title>Paradox Protocol – Consent Firewall</title>
 </head>
-
 <body>
+
   <h1>Paradox Protocol – Consent Firewall</h1>
 
-  <button id="btn">Send Consent Request</button>
+  <button id="sendBtn">Send Consent Request</button>
 
   <pre id="output"></pre>
 
-  <script type="module">
-    import { requestAccess } from "./api.js";
+  <!-- IMPORTANT -->
+  <script type="module" src="./index.js"></script>
 
-    document.getElementById("btn").onclick = async () => {
-      const response = await requestAccess({
-        app_id: "demo_app",
-        user_id: "user_001",
-        data_type: "location",
-        purpose: "delivery_tracking",
-        destination: "frontend",
-        timestamp: new Date().toISOString()
-      });
-
-      document.getElementById("output").textContent =
-        JSON.stringify(response, null, 2);
-    };
-  </script>
 </body>
 </html>

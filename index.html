@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Paradox Protocol</title>
+</head>
+<body>
+
+  <h1>Paradox Protocol – Consent Firewall</h1>
+  <button onclick="sendTest()">Send Consent Request</button>
+
+  <script type="module">
+    import { requestAccess } from './api.js';
+
+    window.sendTest = async function () {
+      const res = await requestAccess({
+        app_id: "demo_app",
+        user_id: "user_001",
+        data_type: "location",
+        purpose: "delivery_tracking",
+        destination: "frontend",
+        timestamp: new Date().toISOString()
+      });
+
+      alert(JSON.stringify(res, null, 2));
+    };
+  </script>
+
+</body>
+</html>
